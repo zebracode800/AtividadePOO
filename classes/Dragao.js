@@ -1,4 +1,4 @@
-let Criatura = require("./Criatura");
+let Criatura = require("../Criatura");
 
 class Dragao extends Criatura {
     constructor(nome, energia) {
@@ -6,7 +6,7 @@ class Dragao extends Criatura {
 }
 
 agir() {
-    console.log(`${this.nome} lança ${this.ataqueMagico}!`);
+    console.log(`\n\t${this.nome} lança ${this.ataqueMagico}!!!`);
     this.alterarEnergia(-30);
 }
 }
