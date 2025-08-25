@@ -1,25 +1,32 @@
 class Criatura {
-    nome;
-    ataqueMagico;
-    #energia = 100;
-
-    constructor(nome, ataqueMagico) {
+nome;
+ataqueMagico;
+#energia;
+    
+    constructor(nome, ataqueMagico, energia) {
         this.nome = nome;
         this.ataqueMagico = ataqueMagico;
+        this.#energia = energia; // inicialização direta
     }
-
+    
+    alterarEnergia(valor) {
+        this.#energia += valor;
+        if (this.#energia < 0) {
+            this.#energia = 0;
+        }
+        console.log(`${this.nome} agora tem ${this.#energia} de energia.`);
+    }
+    
     agir() {
-        if (this.#energia <= 0) return console.log(`${this.nome} está exausto!`);
-        this.#energia -= 10;
-        console.log(`${this.nome} usa ${this.ataqueMagico}! Energia: ${this.#energia}`);
+        console.log(`${this.nome} usa ${this.ataqueMagico}!`);
+        this.alterarEnergia(-10);
     }
-
+    
     descansar() {
-        if (this.#energia >= 100) return console.log(`${this.nome} não precisa descansar.`);
-        this.#energia += 15;
-        console.log(`${this.nome} descansou. Energia: ${this.#energia}`);
+        this.alterarEnergia(15);
+        console.log(`${this.nome} descansou. Energia restaurada!`);
     }
-}
-
+    }
+    
 module.exports = Criatura;
 
